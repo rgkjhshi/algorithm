@@ -13,7 +13,7 @@ public class IDUtilsTest {
 
     @Test
     public void getAge() {
-        String age = IDUtils.getAge("371526198911216331");
+        String age = IDUtils.getAge("120106199101019758");
         logger.info(age);
     }
 }
