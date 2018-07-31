@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:db.properties" ignore-unresolvable="true"/>
+
+    <!-- tomcat JDBC连接池 -->
+    <bean id="tomcatJdbcDataSourceFactory" class="xxx"/>
+
+    <!-- 导入记录的数据源 -->
+    <bean id="dataSource" class="XXX">
+    </bean>
+
+    <!-- 事务处理 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--事务模板 -->
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <!-- spring和MyBatis整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" name="sqlSessionFactory">
+        <!-- dataSource用于指定mybatis的数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- mapperLocations用于指定mybatis中mapper文件所在的位置 -->
+        <property name="mapperLocations" value="classpath:sqlmaps/*.xml"/>
+        <!-- 自动重命名 -->
+        <property name="typeAliasesPackage" value="com.mk.algorithm.dao.entity"/>
+    </bean>
+
+    <!--批量注册mybatis中的dao。 使用这种方式，Dao的实现就不会被调用 -->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mk.algorithm.dao.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+</beans>

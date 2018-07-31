@@ -17,18 +17,26 @@
         <java_target_version>${java.version}</java_target_version>
         <!-- 开源组件版本管理 -->
         <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+        <mybatis.starter.version>1.2.1</mybatis.starter.version>
         <guava.version>23.0</guava.version>
         <gson.version>2.7</gson.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- spring -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.starter.version}</version>
             </dependency>
             <!-- guava -->
             <dependency>
@@ -54,6 +62,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
         <!-- guava -->
         <dependency>

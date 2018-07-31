@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mk.algorithm.dao.mapper.XXXDao">
+
+    <!-- 通过字段名字映射 -->
+    <sql id="base_select">
+        SELECT
+        id                    AS id,
+        tpp_code              AS tppCode,
+        character_code        AS characterCode,
+        character_name        AS characterName,
+        valid_date            AS validDate,
+        character_describe    AS characterDescribe,
+        data_type             AS dataType,
+        out_query             AS outQuery,
+        character_type        AS characterType,
+        special_value         AS specialValue,
+        create_time           AS createTime,
+        update_time           AS updateTime,
+        major_character       AS majorCharacter,
+        amount                AS amount,
+        store_type            AS storeType,
+        value_range           AS valueRange,
+        value_example         AS valueExample
+        FROM character_dic
+    </sql>
+
+    <!-- 查询条件 -->
+    <sql id="where_condition">
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="tppCode != null">
+                AND tpp_code = #{tppCode}
+            </if>
+            <if test="characterCode != null">
+                AND character_code = #{characterCode}
+            </if>
+            <if test="characterName != null">
+                AND character_name = #{characterName}
+            </if>
+            <if test="validDate != null">
+                AND valid_date = #{validDate}
+            </if>
+            <if test="characterDescribe != null">
+                AND character_describe = #{characterDescribe}
+            </if>
+            <if test="dataType != null">
+                AND data_type = #{dataType}
+            </if>
+            <if test="outQuery != null">
+                AND out_query = #{outQuery}
+            </if>
+            <if test="characterType != null">
+                AND character_type = #{characterType}
+            </if>
+            <if test="specialValue != null">
+                AND special_value = #{specialValue}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="majorCharacter != null">
+                AND major_character = #{majorCharacter}
+            </if>
+            <if test="amount != null">
+                AND amount = #{amount}
+            </if>
+            <if test="storeType != null">
+                AND store_type = #{storeType}
+            </if>
+            <if test="valueRange != null">
+                AND value_range = #{valueRange}
+            </if>
+            <if test="valueExample != null">
+                AND value_example = #{valueExample}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="add" parameterType="CharacterDic" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO character_dic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tppCode != null">
+                tpp_code,
+            </if>
+            <if test="characterCode != null">
+                character_code,
+            </if>
+            <if test="characterName != null">
+                character_name,
+            </if>
+            <if test="validDate != null">
+                valid_date,
+            </if>
+            <if test="characterDescribe != null">
+                character_describe,
+            </if>
+            <if test="dataType != null">
+                data_type,
+            </if>
+            <if test="outQuery != null">
+                out_query,
+            </if>
+            <if test="characterType != null">
+                character_type,
+            </if>
+            <if test="specialValue != null">
+                special_value,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="majorCharacter != null">
+                major_character,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="storeType != null">
+                store_type,
+            </if>
+            <if test="valueRange != null">
+                value_range,
+            </if>
+            <if test="valueExample != null">
+                value_example,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="tppCode != null">
+                #{tppCode},
+            </if>
+            <if test="characterCode != null">
+                #{characterCode},
+            </if>
+            <if test="characterName != null">
+                #{characterName},
+            </if>
+            <if test="validDate != null">
+                #{validDate},
+            </if>
+            <if test="characterDescribe != null">
+                #{characterDescribe},
+            </if>
+            <if test="dataType != null">
+                #{dataType},
+            </if>
+            <if test="outQuery != null">
+                #{outQuery},
+            </if>
+            <if test="characterType != null">
+                #{characterType},
+            </if>
+            <if test="specialValue != null">
+                #{specialValue},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            <if test="majorCharacter != null">
+                #{majorCharacter},
+            </if>
+            <if test="amount != null">
+                #{amount},
+            </if>
+            <if test="storeType != null">
+                #{storeType},
+            </if>
+            <if test="valueRange != null">
+                #{valueRange},
+            </if>
+            <if test="valueExample != null">
+                #{valueExample},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 通过主键id更新 -->
+    <update id="updateById" parameterType="CharacterDic">
+        UPDATE payment
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="tppCode != null">
+                tpp_code = #{tppCode},
+            </if>
+            <if test="characterCode != null">
+                character_code = #{characterCode},
+            </if>
+            <if test="characterName != null">
+                character_name = #{characterName},
+            </if>
+            <if test="validDate != null">
+                valid_date = #{validDate},
+            </if>
+            <if test="characterDescribe != null">
+                character_describe = #{characterDescribe},
+            </if>
+            <if test="dataType != null">
+                data_type = #{dataType},
+            </if>
+            <if test="outQuery != null">
+                out_query = #{outQuery},
+            </if>
+            <if test="characterType != null">
+                character_type = #{characterType},
+            </if>
+            <if test="specialValue != null">
+                special_value = #{specialValue},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="majorCharacter != null">
+                major_character = #{majorCharacter},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="storeType != null">
+                store_type = #{storeType},
+            </if>
+            <if test="valueRange != null">
+                value_range = #{valueRange},
+            </if>
+            <if test="valueExample != null">
+                value_example = #{valueExample},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="queryOne" parameterType="CharacterDic" resultType="CharacterDic">
+        <include refid="base_select"/>
+        <include refid="where_condition"/>
+    </select>
+
+    <select id="queryList" parameterType="CharacterDic" resultType="CharacterDic">
+        <include refid="base_select"/>
+        <include refid="where_condition"/>
+    </select>
+
+</mapper>
