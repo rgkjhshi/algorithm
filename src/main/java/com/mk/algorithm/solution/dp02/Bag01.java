@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2022-05-12
  */
 @Slf4j
-public class Package01 {
+public class Bag01 {
 
     public static int solve(int[] w, int[] v, int N, int W) {
         // 创建备忘录
@@ -48,8 +48,6 @@ public class Package01 {
                     dp[tn][rw] = dp[tn - 1][rw];
                 } else {
                     // 剩余容量充足，决策是否放（状态转移方程）
-                    //   1. 放入：那么价值是 dp(tn - 1, rw - w[tn])
-                    //   2. 不放入：那么价值是 dp(tn - 1, rw)
                     dp[tn][rw] = Math.max(dp[tn - 1][rw], dp[tn - 1][rw - w[tn]] + v[tn]);
                 }
             }
