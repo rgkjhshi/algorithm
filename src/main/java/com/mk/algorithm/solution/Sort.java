@@ -64,12 +64,14 @@ public class Sort {
     public static void bubbleSort(int[] array, int n) {
         // 外层循环控制排序的趟数(n-1 趟)
         for (int i = 0; i < n - 1; i++) {
-            // 内层循环负责一趟排序
-            for (int j = 0; j < n - i - 1; j++) {
-                // 若逆序(大的在前为逆序), 则交换
-                if (array[j] > array[j + 1]) {
-                    // swap(j, j+1)
-                    swap(array, j, j + 1);
+            // 内层循环用于比较和交换，即一趟冒泡
+            for (int j = n - 1; j > i; j--) {
+                // 相邻元素比较
+                if (array[j] < array[j - 1]) {
+                    // 交换相邻元素
+                    int tmp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = tmp;
                 }
             }
         }
