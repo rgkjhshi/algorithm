@@ -1,6 +1,5 @@
 package com.mk.algorithm.solution;
 
-import com.google.common.collect.Lists;
 
 import java.util.*;
 
@@ -24,7 +23,7 @@ public class MaxInWindow {
      * @return 滑动窗口最大值
      */
     public static ArrayList<Integer> windowMax(int[] array, int windowSize) {
-        ArrayList<Integer> result = Lists.newArrayList();
+        ArrayList<Integer> result = new ArrayList<>();
         // 窗口滑动
         for (int i = 0; i <= (array.length - windowSize); i++) {
             // 最大值的下标
@@ -51,7 +50,7 @@ public class MaxInWindow {
      */
     public static ArrayList<Integer> maxHeap(int[] array, int windowSize) {
         // 记录窗口最大值
-        ArrayList<Integer> result = Lists.newArrayList();
+        ArrayList<Integer> result = new ArrayList<>();
         // 队列里存的是下标
         PriorityQueue<Pair> queue = new PriorityQueue<>(new Comparator<Pair>() {
             @Override
@@ -91,7 +90,7 @@ public class MaxInWindow {
      */
     public static ArrayList<Integer> deque(int[] array, int windowSize) {
         // 记录窗口最大值
-        ArrayList<Integer> result = Lists.newArrayList();
+        ArrayList<Integer> result = new ArrayList<>();
         // 队列里存的是下标
         Deque<Integer> deque = new LinkedList<>();
 

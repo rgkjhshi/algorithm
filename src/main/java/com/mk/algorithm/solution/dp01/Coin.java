@@ -1,6 +1,5 @@
 package com.mk.algorithm.solution.dp01;
 
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 
@@ -27,7 +26,6 @@ import java.util.Arrays;
  * @author shisong
  * @since 2022-05-12
  */
-@Slf4j
 public class Coin {
 
     public static int solve(int k, int[] coins) {
@@ -58,6 +56,6 @@ public class Coin {
         int total = 11;
         // 计算结果
         int result = solve(total, values);
-        log.info("最少硬币数:" + result);
+        System.out.println("最少硬币数:" + result);
     }
 }

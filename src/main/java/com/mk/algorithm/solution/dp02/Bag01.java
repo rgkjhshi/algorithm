@@ -1,7 +1,5 @@
 package com.mk.algorithm.solution.dp02;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 0-1 背包问题
  * <p>
@@ -21,27 +19,30 @@ import lombok.extern.slf4j.Slf4j;
  * @author shisong
  * @since 2022-05-12
  */
-@Slf4j
 public class Bag01 {
     public static int bag(int[] weight, int[] value, int w) {
         int n = value.length;
         // 创建备忘录
-        int[][] dp = new int[n+1][w+1];
+        int[][] dp = new int[n + 1][w + 1];
 
         // 初始化状态
-        for (int i = 0; i <= n; i++) { dp[i][0] = 0; }
-        for (int j = 0; j <= w; j++) { dp[0][j] = 0; }
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 0;
+        }
+        for (int j = 0; j <= w; j++) {
+            dp[0][j] = 0;
+        }
 
         // 前i件物品
         for (int i = 1; i <= n; i++) {
             // 背包容量
             for (int j = 1; j <= w; j++) {
-                if (j < weight[i-1]) {
+                if (j < weight[i - 1]) {
                     // 剩余容量不足，只能放下前 tn-1 件物品
-                    dp[i][j] = dp[i-1][j];
+                    dp[i][j] = dp[i - 1][j];
                 } else {
                     // 剩余容量充足，进一步作出决策（状态转移方程）
-                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-weight[i-1]] + value[i-1]);
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + value[i - 1]);
                 }
             }
         }
@@ -54,6 +55,6 @@ public class Bag01 {
         int[] value = {5, 2, 3}; // 物品的价值
         // 计算结果
         int result = bag(weight, value, w);
-        log.info("最大能装价值:" + result);
+        System.out.println("最大能装价值:" + result);
     }
 }

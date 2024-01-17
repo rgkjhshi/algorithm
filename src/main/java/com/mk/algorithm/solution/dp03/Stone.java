@@ -1,8 +1,5 @@
 package com.mk.algorithm.solution.dp03;
 
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -37,7 +34,6 @@ import java.util.Arrays;
  * @author shisong
  * @since 2022-05-12
  */
-@Slf4j
 public class Stone {
 
     public static int solve(int[] w, int[] v, int N, int W) {
@@ -85,6 +81,6 @@ public class Stone {
         int maxValue = solve(w, v, N, W);
         // 两组数的差，即为剩下的石头重量
         int result = (sum - maxValue) - maxValue;
-        log.info("最后剩下的石头最小重量为:" + result);
+        System.out.println("最后剩下的石头最小重量为:" + result);
     }
 }
