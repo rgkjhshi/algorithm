@@ -37,25 +37,23 @@ public class Sort {
         int i, j;
         // [1, n-1]依次插入到前面的有序表
         for (i = 1; i <= n - 1; i++) {
-            if (array[i] < array[i - 1]) {
-                int temp = array[i];
-                int low = 0;
-                int high = i - 1;
-                // 折半法寻找i的插入位置
-                while (low <= high) {
-                    int mid = (low + high) / 2;
-                    if (temp > array[mid]) {
-                        low = mid + 1;
-                    } else {
-                        high = mid - 1;
-                    }
+            // 临时存放待插入元素
+            int tmp = array[i];
+            int left = 0, right = i - 1;
+            // 折半法寻找tmp的插入位置
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (tmp < array[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
                 }
-                // low = high + 1, [low, i-1] 都需要后移
-                for (j = i; j > low; j--) {
-                    array[j] = array[j - 1];
-                }
-                array[j] = temp;
             }
+            // 移动元素 出循环后有 left > right 且 left = right + 1
+            for (j = i - 1; j >= left; j--) {
+                array[j + 1] = array[j];
+            }
+            array[left] = tmp;
         }
     }
 
