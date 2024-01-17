@@ -16,13 +16,16 @@ public class Sort {
         int i, j;
         // [1, n-1]依次插入到前面的有序表
         for (i = 1; i <= n - 1; i++) {
-            if (array[i] < array[i - 1]) {
-                int temp = array[i];
-                // 寻找i的插入位置, 并后移
-                for (j = i; j > 0 && temp < array[j - 1]; j--) {
-                    array[j] = array[j - 1];
+            // 临时存放待插入元素
+            int tmp = array[i];
+            // 若tmp小于前序, 需将前序后移并寻找插入位置
+            if (tmp < array[i - 1]) {
+                // 向前逐个比较，大于tmp的元素都要后移，寻找插入位置
+                for (j = i - 1; j >= 0 && tmp < array[j]; j--) {
+                    array[j + 1] = array[j];
                 }
-                array[j] = temp;
+                // 找到插入位置(j后面)
+                array[j + 1] = tmp;
             }
         }
     }
